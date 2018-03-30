@@ -33,8 +33,8 @@ local points = 0
 local pointsObject 
 
 -- varibles for the timer
-local totalSeconds = 3
-local secondsLeft = 3
+local totalSeconds = 11
+local secondsLeft = 11
 local clockText
 local countDownTimer
 
@@ -43,6 +43,11 @@ local heart1
 local heart2
 local heart3
 local heart4
+
+-- local varibale for the game over sound
+local gameOverSound = audio.loadSound( "sounds/gameOver.mp3")
+-- Setting a varibale to an mp3
+local gameOverSoundChannel
 
 ---------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -110,6 +115,7 @@ local function UpdateHearts()
 		gameOver.isVisible = false
 	elseif (lives == 0) then 
 		gameOver.isVisible = true
+		gameOverSoundChannel = audio.play(gameOverSound)
 		numericField.isVisible = false 
 		clockText.isVisible = false 
 	end 
@@ -235,6 +241,7 @@ gameOver.isVisible = false
 -- create the clock text
 clockText = display.newText("", display.contentWidth/2, display.contentHeight/2, nil, 50)
 clockText:setTextColor (230/255, 230/255, 0/255)
+
 ----------------------------------------------------------------------------------
 -- FUNCTION CALLS
 ----------------------------------------------------------------------------------
